@@ -1,43 +1,46 @@
+<!DOCTYPE html>
+<html>
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
 <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
-<style>
-  * {
-    background-color:lightyellow;
-  }
-  
-  h1 {
-    text-color:grey;
-    text-align:center;
-    font-family:'Lobster';
-  }
-  
-  .header-box {
-          background-color: #eeeecc;
-          padding: 20px;
-          margin: -15px;
-          border-radius: 2em;
-      }
-   .body-box {
-          font-family: Calibri;
-          font-size:28px;
-          color:#226666;
-          background-color: #ddddaa;
-          padding: 30px;
-          margin: 80px;
-          border-radius: 2em;
-      }
-</style>
-<h1>Quote Machine</h1>
+<link type="text/css" rel="stylesheet" href="stylesheets/stylesheet.css" />
 
-<div class="container-fluid">
-  <div class="header-box">
-    <div class="row">
-      <div class="col-md-6"></div>
+<head>
+    <title>A Quote Machine</title>
+</head>
+
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script>
+        $.ajaxSetup({
+            cache: false
+        });
+        $(document).ready(function() {
+
+            $("#getMessage").click(function() {
+                $.getJSON("http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1&callback=", function(a) {
+
+                    $("#message").html(a[0].content + "<p>&mdash; " + a[0].title + "</p>");
+
+                });
+                setTimeout("this", 1000);
+            });
+        });
+    </script>
+
+    <h1>Quote Machine</h1>
+    <div class="container-fluid">
+        <div class="header-box">
+            <div class="row">
+                <div class="col-md-6"></div>
+            </div>
+            <div id="message" class="body-box">
+                Here should the json show up
+            </div>
+
+            <button id="getMessage" class="btn">
+                New Quote
+            </button>
+        </div>
     </div>
-    <div class="body-box message">
-      Here should the json show up
-    </div>
-    <button id="getMessage" class="btn">
-            New Quote
-        </button>
-  </div>
+</body>
+</html>
