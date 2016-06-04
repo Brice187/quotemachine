@@ -1,4 +1,4 @@
-* {
+body {
     background-color:lightyellow;
   }
 
@@ -7,6 +7,11 @@
     text-align:center;
     font-family:'Lobster';
   }
+.footer {
+    color:lightgray;
+    font-size: 8;
+    text-align: center;
+}
 
   .header-box {
           background-color: #eeeecc;
@@ -18,8 +23,12 @@
           font-family:'Lobster';
           font-size:28px;
           color:#226666;
-          background-color: #ddddaa;
+          background-color:lightyellow ;
           padding: 2%;
           margin: 10%;
           border-radius: 2em;
       }
+.body-box:hover {
+  background-color: lightgoldenrodyellow;
+}
+
